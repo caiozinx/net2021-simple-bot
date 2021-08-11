@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>e3c89436-714d-4033-97d2-c633067390dc</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Bot.Connector" Version="4.14.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
   </ItemGroup>
 
 </Project>

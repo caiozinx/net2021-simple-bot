@@ -10,10 +10,12 @@ namespace SimpleBotCore.Logic
     public class SimpleBot : BotDialog
     {
         IUserProfileRepository _userProfile;
+        IAskRepository _askRepository;
 
-        public SimpleBot(IUserProfileRepository userProfile)
+        public SimpleBot(IUserProfileRepository userProfile, IAskRepository askRepository)
         {
             _userProfile = userProfile;
+            _askRepository = askRepository;
         }
 
         protected async override Task BotConversation()
@@ -69,12 +71,11 @@ namespace SimpleBotCore.Logic
             {
                 string texto = await ReadAsync();
 
-                if( texto.EndsWith("?") )
+                if( texto.EndsWith("?") || texto.EndsWith("?!"))
                 {
                     await WriteAsync("Processando...");
 
-                    // FAZER: GRAVAR AS PERGUNTAS EM UM BANCO DE DADOS
-                    await Task.Delay(5000);
+                    _askRepository.StoreAsk(texto);
 
                     await WriteAsync("Resposta não encontrada");
                 }
