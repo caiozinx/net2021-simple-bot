@@ -35,6 +35,7 @@ namespace SimpleBotCore
                 string connectionString = Configuration["MongoDB:ConnectionString"];
                 MongoClient client = new MongoClient(connectionString);
                 services.AddSingleton<IAskRepository>(new AskRepository(client));
+
             }else if(flagDatabase == "S")
             {
                 //sqlserver init
