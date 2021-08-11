@@ -30,13 +30,13 @@ namespace SimpleBotCore
         {
             var flagDatabase = Configuration["DatabaseFlag"];
             
-            if(flagDatabase == "M")
+            if(flagDatabase.Equals("M"))
             {
                 string connectionString = Configuration["MongoDB:ConnectionString"];
                 MongoClient client = new MongoClient(connectionString);
                 services.AddSingleton<IAskRepository>(new AskRepository(client));
 
-            }else if(flagDatabase == "S")
+            }else if(flagDatabase.Equals("S"))
             {
                 //sqlserver init
             }
