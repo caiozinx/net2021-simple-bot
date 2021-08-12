@@ -28,9 +28,10 @@ namespace SimpleBotCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var flagDatabase = Configuration["DatabaseFlag"];
-            
-            if(flagDatabase.Equals("M"))
+            //var flagDatabase = Configuration["DatabaseFlag"];
+            var flagDatabase = "";
+
+            if (flagDatabase.Equals("M"))
             {
                 string connectionString = Configuration["MongoDB:ConnectionString"];
                 MongoClient client = new MongoClient(connectionString);
@@ -43,6 +44,7 @@ namespace SimpleBotCore
             else
             {
                 //mockinit
+                services.AddSingleton<IAskRepository>(new AskMock());
             }
 
             services.AddSingleton<IUserProfileRepository>(new UserProfileMockRepository());
