@@ -43,6 +43,7 @@ namespace SimpleBotCore
             else
             {
                 //mockinit
+                services.AddSingleton<IAskRepository>(new AskMock());
             }
 
             services.AddSingleton<IUserProfileRepository>(new UserProfileMockRepository());
